@@ -1501,7 +1501,10 @@ class Timestamp(_Timestamp):
                 "For now, please call the components you need (such as `.year` "
                 "and `.month`) and construct your string from there."
             ) from err
-        return _dt.strftime(format)
+        try :
+            return _dt.strftime(format)
+        except ValueError as err:
+            return str(_dt)
 
     def ctime(self):
         """
